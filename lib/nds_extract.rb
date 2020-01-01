@@ -91,17 +91,35 @@ end
   # total of all the worldwide_gross numbers for every movie in the input Hash
 
 def movies_with_directors_set(source)
-  # GOAL: For each director, find their :movies Array and stick it in a new Array
-  #
-  # INPUT:
-  # * source: An Array of Hashes containing director information including
-  # :name and :movies
-  #
-  # RETURN:
-  #
-  # Array of Arrays containing all of a director's movies. Each movie will need
-  # to have a :director_name key added to it.
+  i = 0
+  array = []
+  while i < source.length
+    n = 0
+    array2 = []
+    while n < source[i][:movies].length
+      array2 << movie_with_director_name(source[i][:name], source[i][:movies][n])
+      n += 1
+    end
+  array << array2 
+  i += 1
+  end 
+  return array
 end
+
+
+
+
+#   GOAL: For each director, find their :movies Array and stick it in a new Array
+  
+#   INPUT:
+#   * source: An Array of Hashes containing director information including
+#   :name and :movies
+  
+#   RETURN:
+  
+#   Array of Arrays containing all of a director's movies. Each movie will need
+#   to have a :director_name key added to it.
+
 
 # ----------------    End of Your Code Region --------------------
 # Don't edit the following code! Make the methods above work with this method
