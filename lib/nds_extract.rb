@@ -21,7 +21,7 @@ def flatten_a_o_a(aoa)
 end
 
 def movie_with_director_name(director_name, movie_data)
-  { 
+  {
     :title => movie_data[:title],
     :worldwide_gross => movie_data[:worldwide_gross],
     :release_year => movie_data[:release_year],
@@ -34,6 +34,20 @@ end
 # Your code after this point
 
 def movies_with_director_key(name, movies_collection)
+  updated_movies = []
+  movies = []
+  movies << movie_with_director_name(name, movies_collection)
+  i = 0
+  while i < movies.length do
+    movie_hash = {
+      :director_name => movies[i][:director_name],
+      :title => movies[i][:title]
+    }
+    updated_movies << movie_hash
+    i += 1
+  end
+  updated_movies
+
   # GOAL: For each Hash in an Array (movies_collection), provide a collection
   # of movies and a directors name to the movie_with_director_name method
   # and accumulate the returned Array of movies into a new Array that's
